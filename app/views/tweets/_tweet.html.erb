@@ -1,6 +1,8 @@
 <br>
 <%if user_signed_in? && current_user.id == tweet.user_id%>
   <%=link_to "Редагувати", edit_tweet_path(tweet.id)%><br>
+  <%=link_to "destroy", tweet_path(tweet.id), method: :delete%><br>
+
 <%end%>
 
 Title:<%= tweet.title%><br>
