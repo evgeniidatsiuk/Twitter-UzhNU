@@ -1,0 +1,7 @@
+<br>
+<%if user_signed_in? && current_user.id == tweet.user_id%>
+  <%=link_to "Редагувати", edit_tweet_path(tweet.id)%><br>
+<%end%>
+
+Title:<%= tweet.title%><br>
+Title:<%= tweet.body%><br>
