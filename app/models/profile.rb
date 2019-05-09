@@ -1,4 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  #has_many :tweets
+
+  def tweets
+  user.tweets
+  end
+
 end

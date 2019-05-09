@@ -23,7 +23,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @tweet = current_user.tweets.build
+  end
 
   def edit
     @profile = current_user.profile
