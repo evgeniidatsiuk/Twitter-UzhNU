@@ -1,10 +1,10 @@
+<%= render 'tweets/new'%>
 <% if @tweets == []%>
 
-<%= link_to "Add new tweet", new_tweet_path%>
-
+  <%= link_to "Add new tweet", new_tweet_path%>
 
 <% else %>
 
-<%= render @tweets%>
+  <%= render @tweets%>
 
 <% end %>

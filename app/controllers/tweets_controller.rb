@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   before_action :find_tweet, only: %i[show edit update destroy]
 
   def index
+    @tweet = current_user.tweets.build
     @tweets = Tweet.all
     end
 
@@ -15,7 +16,7 @@ class TweetsController < ApplicationController
 
     if @tweet.save
 
-      redirect_to tweet_path(@tweet.id)
+      redirect_back(fallback_location: root_path)
     else
       render 'new'
     end
@@ -25,12 +26,12 @@ class TweetsController < ApplicationController
 
   def update
     @tweet.update(tweet_params)
-    redirect_to tweet_path(@tweet.id)
+  redirect_back(fallback_location: root_path)
     end
 
   def destroy
     @tweet.destroy
-    redirect_to tweets_path
+  redirect_back(fallback_location: root_path)
   end
 
   def show; end
