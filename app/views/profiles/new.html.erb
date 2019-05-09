@@ -1,0 +1,4 @@
+<%= form_for @profile, url: profiles_path do |f| %>
+<%=render 'profiles/form', f:f%>
+<%= f.submit "Create" %>
+<% end %>
