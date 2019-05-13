@@ -4,5 +4,10 @@ class Profile < ApplicationRecord
   def tweets
   user.tweets
   end
+  
+  def followers
+  user.followers
+  end
+
 
 end

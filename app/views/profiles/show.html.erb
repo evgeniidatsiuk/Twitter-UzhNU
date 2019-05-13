@@ -4,8 +4,11 @@
 <%=@profile.lastname%></h5>
 <h5>Вік:
 <%=@profile.age %></h5>
+<br>
+<%= render 'profiles/userinfo' %>
 <%= render 'tweets/new' %>
 <%= render @profile.tweets%>
+
 
 <%if user_signed_in? && current_user.id == @profile.id%>
 
