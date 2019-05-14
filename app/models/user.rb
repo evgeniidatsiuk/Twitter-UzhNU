@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-   after_create :create_profile
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -16,10 +15,7 @@ class User < ApplicationRecord
                                         dependent:   :destroy
        has_many :following, through: :active_relationships, source: :followed
        has_many :followers, through: :passive_relationships, source: :follower
-  def create_profile
-     @profile = Profile.create(user_id: id, firstname: "Your FirstName", lastname: "Your LastName", age: 1)
-     @profile.save
-  end
+
 
 
   # Follows a user.

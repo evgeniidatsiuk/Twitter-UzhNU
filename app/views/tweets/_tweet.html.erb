@@ -1,10 +1,5 @@
 <br>
-<%= link_to  profile_path(tweet.user.profile) do %>
-      <b class="text-secondary">
-        <%= tweet.user.profile.firstname%>
-      </b>
-    </small>
-<%end%>
+<%= link_to @user.email.split('@').first, user_path(@user.id) %>
 <%if user_signed_in? && current_user.id == tweet.user_id%>
   <%=link_to "Редагувати", edit_tweet_path(tweet.id)%><br>
   <%=link_to "destroy", tweet_path(tweet.id), method: :delete%><br>
