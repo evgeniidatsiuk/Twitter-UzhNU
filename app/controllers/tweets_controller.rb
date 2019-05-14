@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_action :find_tweet, only: %i[show edit update destroy]
 
   def index
-    @user = User.find_by(id: params[:id])
+  #  @user = User.find_by(id: params[:id])
     @tweet = current_user.tweets.build
     @tweets = Tweet.all
     end

@@ -1,0 +1,9 @@
+<br><%= gravatar_for @user, size: 50 %>
+<br>
+<%= render 'users/stats' %>
+<hr>
+<%= render 'users/follow_form' %>
+<% if @user.tweets.any? %>
+  <h3>Tweets (<%= @user.tweets.count %>)</h3>
+  <%= render @tweets %>
+<% end %>
