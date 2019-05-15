@@ -1,9 +1,9 @@
 <br>
 <%= link_to @user.email.split('@').first, user_path(@user.id) %>
 <%if user_signed_in? && current_user.id == tweet.user_id%>
-  <%=link_to "Редагувати", edit_tweet_path(tweet.id)%><br>
-  <%=link_to "destroy", tweet_path(tweet.id), method: :delete%><br>
+  <%=link_to "Edit", edit_tweet_path(tweet.id), class:"btn btn-secondary"%><br>
+  <%=link_to "Delete", tweet_path(tweet.id), method: :delete, class:"btn btn-secondary"%><br>
 
 <%end%>
 
-YOUR TWEET<%= tweet.body%><br>
+YOUR TWEET<%= tweet.body, class:"input"%><br>
