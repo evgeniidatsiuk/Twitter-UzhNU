@@ -1,0 +1,15 @@
+      <%= gravatar_for @user %>
+      <%= @user.email.split('@').first %></h1>
+      <%= link_to "View my profile", @user %>
+      Tweets: <%= @user.tweets.count %>
+      <%= render 'users/stats' %>
+      <% if @users.any? %>
+          <% @users.each do |user| %>
+            <%= link_to gravatar_for(user, size: 30), user %>
+          <% end %>
+      <% end %>
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+
+        <%= render @users %>
+      <% end %>

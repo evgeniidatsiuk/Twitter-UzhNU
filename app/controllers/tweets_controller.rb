@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   before_action :find_tweet, only: %i[show edit update destroy]
 
   def index
+  #  @user = User.find_by(id: params[:id])
     @tweet = current_user.tweets.build
     @tweets = Tweet.all
     end
@@ -39,10 +40,11 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body)
+    params.require(:tweet).permit(:user_id, :body)
   end
 
   def find_tweet
+    @user = User.find_by(id: params[:id])
     @tweet = Tweet.find(params[:id])
   end
 end

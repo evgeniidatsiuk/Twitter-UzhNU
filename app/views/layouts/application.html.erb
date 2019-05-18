@@ -10,7 +10,7 @@
   </head>
 
   <body>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
   </body>
 </html>
