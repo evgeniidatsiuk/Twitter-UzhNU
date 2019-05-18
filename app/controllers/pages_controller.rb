@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
     before_action :authenticate_user!
   def index
-    @tweet = current_user.tweets.build
-    @tweets = Tweet.all
+    if user_signed_in?
+    @tweet = Tweet.new
+   @feed = current_user.feed
+   @tweets = Tweet.where(id: current_user.id)
+ else
+   @tweets = Tweets.all
+ end
   end
 end

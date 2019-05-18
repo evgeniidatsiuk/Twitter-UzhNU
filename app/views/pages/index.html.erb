@@ -1,11 +1,7 @@
+<% if user_signed_in? %>
 <%= render 'users/stats' %>
 <%= render 'tweets/new'%>
-<% if @tweets == []%>
-
-  <%= link_to "Add new tweet", new_tweet_path%>
-
+<%= render @feed %>
 <% else %>
-
   <%= render @tweets%>
-
 <% end %>
