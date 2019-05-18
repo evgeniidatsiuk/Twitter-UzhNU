@@ -3,8 +3,12 @@
 <%= link_to "Setting", edit_user_registration_path %>
 <%= render 'users/stats' %>
 <hr>
-<%= render 'users/follow_form' %>
+<%= render 'relationships/form' %>
+<%= link_to "followers", followers_user_path(@user) %>
+<%=link_to "following", following_user_path(@user) %>
+      <br>
+
 <% if @user.tweets.any? %>
   <h3>Tweets (<%= @user.tweets.count %>)</h3>
-  <%= render @tweets %>
+  <%= render @user.tweets %>
 <% end %>

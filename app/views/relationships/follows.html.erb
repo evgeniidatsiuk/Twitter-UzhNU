@@ -1,0 +1,9 @@
+<%= @user.email %>
+<%= link_to "profile", @user%>
+<br>
+
+<% if @users.any? %>
+
+  <%= render @users %>
+
+<% end %>
