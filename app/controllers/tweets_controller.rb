@@ -35,7 +35,9 @@ class TweetsController < ApplicationController
   redirect_back(fallback_location: root_path)
   end
 
-  def show; end
+  def show
+ @comment = current_user.comments.build
+  end
 
   private
 

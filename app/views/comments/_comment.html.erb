@@ -1,0 +1,9 @@
+<% image.comments.each do |x| %>
+  <% if x.user == current_user %>
+    <%= link_to "Delete comment", comment_path(x), method: :delete %>
+  <% end %>
+  <%= link_to x.user.email, user_path(x.user) %>
+
+  <%= x.text %>
+
+<% end %>

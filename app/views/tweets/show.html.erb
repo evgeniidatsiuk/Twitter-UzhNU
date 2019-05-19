@@ -5,3 +5,7 @@
 <%end%>
 
 YOUR TWEET:<%= @tweet.body%><br>
+<%= render 'comments/create'%>
+<% @tweet.user.comments.each do |x| %>
+<%= x.text %>
+<% end %>
