@@ -1,4 +1,4 @@
-<br><%= gravatar_for @user, size: 50 %>
+<br><%= image_tag @user.avatar.url, style:"width:400px;"%>
 <br>
 <%= link_to "Setting", edit_user_registration_path %>
 <%= render 'users/stats' %>

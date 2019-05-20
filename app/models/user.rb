@@ -19,6 +19,9 @@ class User < ApplicationRecord
          has_many :followers, through: :passive_relationships, source: :follower
 
 
+           has_attached_file :avatar, default_url: '/assets/missing.png'
+           validates_attachment_content_type :avatar, content_type: ['image/jpeg', 'image/gif', 'image/png']
+
 
          def follow(other_user)
           following << other_user
