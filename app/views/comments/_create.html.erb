@@ -1,5 +1,0 @@
-<%= form_for @comment, comments_path do |f| %>
-  <%= render 'comments/comment', f:f%>
-  <%= hidden_field_tag :tweet_id, @tweet.id %>
-  <%= f.submit " + Comment" %>
-<% end %>

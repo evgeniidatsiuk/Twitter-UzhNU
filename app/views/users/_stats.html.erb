@@ -5,7 +5,7 @@
   <%= @user.following.count %>
 <% end %>
 <br>
-<%= link_to followers_user_path(@user) do %>
+<%= link_to followers_user_path(@user), class:"link" do %>
 Followers:
 <%= @user.followers.count %>
 <% end %>

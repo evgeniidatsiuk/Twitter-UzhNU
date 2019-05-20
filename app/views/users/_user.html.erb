@@ -1,4 +1,30 @@
-  <br><br>
-  <%= gravatar_for user, size: 50 %>
-  <%= link_to "More", user %>
-  <hr>
+<div class="user-profile container-fluid">
+	
+<div class="row">
+  <div class="col-lg-3"></div>
+      <div class="col-sm-6 col-lg-3 center">
+        <%= gravatar_for user, size: 50 %><br>
+        <%= link_to "More", user, class:"btn btn-secondary" %>
+      </div><!-- /.col -->
+
+		<div class="col-sm-6 col-lg-3">
+			<h4 class="blue">
+				<span class="middle"><%= user.nickname %></span>
+			</h4>
+
+			<div class="profile-user-info">
+				<div class="profile-info-row">
+					<div class="profile-info-name"> Username </div>
+
+					<div class="profile-info-value">
+						<span><%= user.nickname %></span>               
+   					</div>
+   				</div>
+
+			</div>
+			
+		</div><!-- /.col -->
+		<div class="col-lg-3"></div>
+	</div><!-- /.row -->
+		
+</div>

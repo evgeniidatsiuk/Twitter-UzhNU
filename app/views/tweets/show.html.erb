@@ -3,9 +3,11 @@
   <%=link_to "Редагувати", edit_tweet_path(@tweet.id)%><br>
   <%=link_to "Destroy", tweet_path(@tweet.id), method: :delete%><br>
 <%end%>
-
-YOUR TWEET:<%= @tweet.body%><br>
-<%= render 'comments/create'%>
-<% @tweet.user.comments.each do |x| %>
-<%= x.text %>
-<% end %>
+<br>
+<%= @tweet.body%><br>
+<%= render 'comments/form'%>
+<ul class="content-list content-list_comments">
+  <% @comments.each do |comment| %>
+    <%=render 'comments/comment', comment:comment %>
+  <%end%>
+</ul>
