@@ -26,13 +26,18 @@ class TweetsController < ApplicationController
   def edit; end
 
   def update
-    @tweet.update(tweet_params)
-  redirect_back(fallback_location: root_path)
+  if  @tweet.update(tweet_params)
+  #redirect_back(fallback_location: root_path)
+  redirect_to tweet_path(@tweet.id)
+else
+  render 'edit'
+end
     end
 
   def destroy
-    @tweet.destroy
-  redirect_back(fallback_location: root_path)
+  if  @tweet.destroy
+  redirect_to tweets_path
+end
   end
 
   def show
@@ -47,7 +52,6 @@ class TweetsController < ApplicationController
   end
 
   def find_tweet
-    @user = User.find_by(id: params[:id])
-    @tweet = Tweet.find(params[:id])
+   @tweet = Tweet.find(params[:id])
   end
 end
