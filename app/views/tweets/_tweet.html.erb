@@ -1,5 +1,5 @@
 <br>
-<%= link_to @user.email.split('@').first, user_path(@user.id) %>
+<%= link_to tweet.user.nickname, user_path(tweet.user.id) %>
 <%if user_signed_in? && current_user.id == tweet.user_id%>
   <%=link_to "Edit", edit_tweet_path(tweet.id), class:"btn btn-secondary"%><br>
   <%=link_to "Delete", tweet_path(tweet.id), method: :delete, class:"btn btn-secondary"%><br>
