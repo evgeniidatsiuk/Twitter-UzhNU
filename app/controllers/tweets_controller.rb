@@ -37,6 +37,7 @@ class TweetsController < ApplicationController
 
   def show
  @comment = current_user.comments.build
+ @comments=Comment.where(tweet_id: @tweet.id).order(created_at: :desc)
   end
 
   private

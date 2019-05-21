@@ -1,16 +1,14 @@
-<% if user_signed_in? %>
-<%= render 'users/stats' %>
-<%= render 'tweets/new'%>
 <div class="row">
   <div class="col-md-3 col-lg-4"></div>
       <div class="col-sm-6 col-md-6 col-lg-4 center">
-        <% if @tweets == []%>
-          <%= link_to "Add new tweet", new_tweet_path, class:"btn btn-primary"%>
-          <%= render @feed %>
-        <% else %>
-          <%= render @tweets %>
-        <% end %>
-        <% end %>
+      <% if user_signed_in? %>
+      <%= render 'users/stats' %>
+      <%= render 'tweets/new'%>
+      <%= render @feed %>
+      <%# render @tweets%>
+      <% else %>
+        <% render @tweets%>
+      <% end %>
       </div><!-- /.col -->
     <div class="col-md-3 col-lg-4"></div>
 </div><!-- /.row -->

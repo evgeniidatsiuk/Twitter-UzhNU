@@ -1,9 +1,12 @@
-<% image.comments.each do |x| %>
-  <% if x.user == current_user %>
-    <%= link_to "Delete comment", comment_path(x), method: :delete %>
-  <% end %>
-  <%= link_to x.user.email, user_path(x.user) %>
+Author:
+<%= comment.user.nickname%><br>
+<%=comment.text%><br>
+Created:
+<%= comment.created_at.to_date.strftime("%d %B, %Y ") %><hr>
 
-  <%= x.text %>
-
-<% end %>
+<% if comment.user.id == current_user.id %>
+<%= link_to "delete", comment_path(comment.id), method: :delete %>
+<% end%>
+<ul>
+  <%# render comment.comments %>
+  </ul>
