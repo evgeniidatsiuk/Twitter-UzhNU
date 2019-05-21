@@ -6,34 +6,33 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :tweets
+         has_many :comments
          has_one :profile
 
-         has_many :active_relationships,  class_name:   "Relationship",
-                                        foreign_key:  "follower_id",
-                                        dependent:    :destroy
-       has_many :passive_relationships, class_name:  "Relationship",
-                                        foreign_key: "followed_id",
-                                        dependent:   :destroy
-       has_many :following, through: :active_relationships, source: :followed
-       has_many :followers, through: :passive_relationships, source: :follower
+         has_many :active_relationships, class_name:  "Relationship",
+                                         foreign_key: "follower_id",
+                                         dependent:   :destroy
+         has_many :passive_relationships, class_name:  "Relationship",
+                                          foreign_key: "followed_id",
+                                          dependent:   :destroy
+         has_many :following, through: :active_relationships,  source: :followed
+         has_many :followers, through: :passive_relationships, source: :follower
 
 
-  # Follows a user.
-    def follow(other_user)
-      active_relationships.create(followed_id: other_user.id)
-    end
 
-    # Unfollows a user.
-    def unfollow(other_user)
-      active_relationships.find_by(followed_id: other_user.id).destroy
-    end
+         def follow(other_user)
+          following << other_user
+        end
 
-    # Returns true if the current user is following the other user.
-    def following?(other_user)
-      followers.include?(other_user)
-    end
+        def unfollow(other_user)
+          following.delete(other_user)
+        end
 
-    def self.find_for_database_authentication(warden_conditions)
+        def following?(other_user)
+          following.include?(other_user)
+        end
+
+  def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup
    login = conditions.delete(:login)
    where(conditions).where(['lower(nickname) = :value OR lower(email) = :value', { value: login.strip.downcase }]).first
@@ -74,5 +73,12 @@ class User < ApplicationRecord
 
  def self.find_record(login)
    where(['username = :value OR email = :value', { value: login }]).first
+ end
+
+ def feed
+    r = Relationship.arel_table
+    t = Tweet.arel_table
+    sub_query = t[:user_id].in(r.where(r[:follower_id].eq(id)).project(r[:followed_id]))
+    Tweet.where(sub_query.or(t[:user_id].eq(id)))
  end
 end
